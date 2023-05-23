@@ -75,13 +75,8 @@ class _MainScreenState extends State<MainScreen> {
                   itemBuilder: (context, index) {
                     final item = items[index];
                     return GestureDetector(
-                      onTap: (){
-                        Navigator.push(
-                            context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductScreen(item: items[index]),
-                          ),
-                        );
+                      onTap:(){
+                        Navigator.pushNamed(context, '/product', arguments: item);
                       },
                       child: Container(
                         padding: EdgeInsets.all(10.0),

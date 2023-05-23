@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp>{
       home : StartScreen(),
       routes: {
         '/main':(context) => MainScreen(),
+        '/product' : (context) => ProductScreen(),
       },
     );
   }
