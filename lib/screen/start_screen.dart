@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'main_screen.dart';
+import 'package:inventory_mgmt/screen/setting_screen.dart';
+import 'package:inventory_mgmt/screen/main_screen.dart';
 
 class StartScreen extends StatefulWidget{
   _StartScreenState createState() => _StartScreenState();
@@ -28,15 +28,24 @@ class _StartScreenState extends State<StartScreen>{
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
-                        Icon(
-                          Icons.settings,
-                          size: 30,
-                        ),
-                      ],
-                    )
+                    GestureDetector(
+                      onTap: () {
+                        // Perform page navigation here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SettingScreen()),
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: const [
+                          Icon(
+                            Icons.settings,
+                            size: 30,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 80),
