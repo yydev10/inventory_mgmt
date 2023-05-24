@@ -1,7 +1,7 @@
 class Item {
   final int number;
   final String product;
-  final int specific;
+  final String specific;
   final int count;
   final String project;
 
