@@ -30,6 +30,13 @@ class _ProductScreenState extends State<ProductScreen> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
+          leading: IconButton(
+            color: Colors.black45,
+            icon:Icon(Icons.arrow_back_ios),
+            onPressed: (){
+              Navigator.pop(context);
+            },
+          ),
           actions: [
             IconButton(
               color: Colors.black45,
@@ -57,7 +64,7 @@ class _ProductScreenState extends State<ProductScreen> {
               Text(
                 '재고 관리',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 24,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -80,10 +87,13 @@ class _ProductScreenState extends State<ProductScreen> {
               SizedBox(height: 30.0),
               Text(
                 '품명',
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold
+                ),
               ),
               TextFormField(
-                initialValue:'${widget.product}',
+                initialValue: '${widget.product}' != "" ? '${widget.product}' : '',
                 onChanged: (value) {
                   setState(() {
                     title = value;
@@ -93,10 +103,13 @@ class _ProductScreenState extends State<ProductScreen> {
               SizedBox(height: 16.0),
               Text(
                 '규격',
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold
+                ),
               ),
               TextFormField(
-                initialValue: '${widget.specific}',
+                initialValue: '${widget.specific}' != "" ? '${widget.specific}' : '',
                 onChanged: (value) {
                   setState(() {
                     projectText = value;
@@ -106,10 +119,13 @@ class _ProductScreenState extends State<ProductScreen> {
               SizedBox(height: 16.0),
               Text(
                 '갯수',
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold
+                ),
               ),
               TextFormField(
-                initialValue: '${widget.count}',
+                initialValue: '${widget.count}' != 0 ? '${widget.count}' : '',
                 onChanged: (value) {
                   setState(() {
                     projectText = value;
@@ -119,7 +135,10 @@ class _ProductScreenState extends State<ProductScreen> {
               SizedBox(height: 16.0),
               Text(
                 '프로젝트',
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold
+                ),
               ),
               DropdownButton<String>(
                 value: _selectedItem,

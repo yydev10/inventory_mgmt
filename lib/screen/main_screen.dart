@@ -41,7 +41,16 @@ class _MainScreenState extends State<MainScreen> {
     ];
 
     void goDetailPage(){
-      Navigator.pushNamed(context, '/product', arguments: '');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProductScreen(
+          product : '',
+          specific: '',
+          count: 0,
+          project: '',
+        ),
+        ),
+      );
     }
     return MaterialApp(
       title: '재고관리 앱',
@@ -82,7 +91,6 @@ class _MainScreenState extends State<MainScreen> {
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final item = items[index];
-                    print(item.product);
                     return GestureDetector(
                       onTap:(){
                         Navigator.push(
