@@ -26,10 +26,6 @@ class _MyAppState extends State<MyApp>{
     return MaterialApp(
       title : '재고 관리',
       home : StartScreen(),
-      routes: {
-        '/main':(context) => MainScreen(),
-        '/product' : (context) => ProductScreen(),
-      },
     );
   }
 }
