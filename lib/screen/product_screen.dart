@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import '../model/Item.dart';
+import '../models/Item.dart';
 
 class ProductScreen extends StatefulWidget{
-  ProductScreen({super.key});
+  final String product,specific,project;
+  final int count;
+
+  const ProductScreen({
+    super.key,
+    required this.product,
+    required this.specific,
+    required this.count,
+    required this.project,
+  });
 
   _ProductScreenState createState() => _ProductScreenState();
 }
@@ -15,17 +24,12 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(ModalRoute.of(context)!);
-    final recvItem = ModalRoute.of(context)!.settings.arguments as Item;
-
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(
-              '재고 관리',
-              style: TextStyle(color: Colors.black)
-          ),
+          elevation: 0,
           actions: [
             IconButton(
               color: Colors.black45,
@@ -45,11 +49,18 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: 10,
+            horizontal: 15,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                '재고 관리',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -72,7 +83,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               TextFormField(
-                initialValue: recvItem == null ? '${recvItem.product}' : '',
+                initialValue:'${widget.product}',
                 onChanged: (value) {
                   setState(() {
                     title = value;
@@ -85,7 +96,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               TextFormField(
-                initialValue: recvItem == null ? '${recvItem.specific}' : '',
+                initialValue: '${widget.specific}',
                 onChanged: (value) {
                   setState(() {
                     projectText = value;
@@ -98,7 +109,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               TextFormField(
-                initialValue: recvItem == null ? '${recvItem.count}' : '',
+                initialValue: '${widget.count}',
                 onChanged: (value) {
                   setState(() {
                     projectText = value;

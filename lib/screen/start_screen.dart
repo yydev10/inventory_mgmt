@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main_screen.dart';
+
 class StartScreen extends StatefulWidget{
   _StartScreenState createState() => _StartScreenState();
 }
@@ -53,10 +55,10 @@ class _StartScreenState extends State<StartScreen>{
                       child:ElevatedButton(
                         style: style,
                         onPressed: (){
-                          Navigator.pushNamed(
-                              context,
-                              '/main',
-                              arguments: '공장',
+                          Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainScreen(type: '공장')
+                              )
                           );
                         },
                         child: const Text('공장'),
@@ -68,10 +70,8 @@ class _StartScreenState extends State<StartScreen>{
                       child: ElevatedButton(
                         style: style,
                         onPressed: (){
-                          Navigator.pushNamed(
-                            context,
-                            '/main',
-                            arguments: '사무실',
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => MainScreen(type: '사무실',))
                           );
                         },
                         child: const Text('사무실'),

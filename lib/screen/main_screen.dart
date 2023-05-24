@@ -1,40 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:inventory_mgmt/screen/product_screen.dart';
 
-import '../model/Item.dart';
+import '../models/Item.dart';
 
 class MainScreen extends StatefulWidget{
+  final String type;
+
+  const MainScreen({
+    super.key,
+    required this.type,
+  });
+
   _MainScreenState createState() => _MainScreenState();
 }
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    final String receivedData =
-    ModalRoute.of(context)!.settings.arguments as String;
 
     final List<Item> items = [
-      Item(1, '케이블', 15, 3,'프로젝트1'),
-      Item(2, '케이블', 15, 3,'프로젝트1'),
-      Item(3, '케이블', 15, 3,'프로젝트1'),
-      Item(4, '케이블', 15, 3,'프로젝트1'),
-      Item(5, '케이블', 15, 3,'프로젝트1'),
-      Item(1, '케이블', 15, 3,'프로젝트1'),
-      Item(2, '케이블', 15, 3,'프로젝트1'),
-      Item(3, '케이블', 15, 3,'프로젝트1'),
-      Item(4, '케이블', 15, 3,'프로젝트1'),
-      Item(5, '케이블', 15, 3,'프로젝트1'),
-      Item(1, '케이블', 15, 3,'프로젝트1'),
-      Item(2, '케이블', 15, 3,'프로젝트1'),
-      Item(3, '케이블', 15, 3,'프로젝트1'),
-      Item(4, '케이블', 15, 3,'프로젝트1'),
-      Item(5, '케이블', 15, 3,'프로젝트1'),
-      Item(1, '케이블', 15, 3,'프로젝트1'),
-      Item(2, '케이블', 15, 3,'프로젝트1'),
-      Item(3, '케이블', 15, 3,'프로젝트1'),
-      Item(4, '케이블', 15, 3,'프로젝트1'),
-      Item(5, '케이블', 15, 3,'프로젝트1'),
+      Item(1, '케이블', '15', 3,'프로젝트1'),
+      Item(2, '케이블', '15', 3,'프로젝트1'),
+      Item(3, '케이블', '15', 3,'프로젝트1'),
+      Item(4, '케이블', '15', 3,'프로젝트1'),
+      Item(5, '케이블', '15', 3,'프로젝트1'),
+      Item(1, '케이블', '15', 3,'프로젝트1'),
+      Item(2, '케이블', '15', 3,'프로젝트1'),
+      Item(3, '케이블', '15', 3,'프로젝트1'),
+      Item(4, '케이블', '15', 3,'프로젝트1'),
+      Item(5, '케이블', '15', 3,'프로젝트1'),
+      Item(1, '케이블', '15', 3,'프로젝트1'),
+      Item(2, '케이블', '15', 3,'프로젝트1'),
+      Item(3, '케이블', '15', 3,'프로젝트1'),
+      Item(4, '케이블', '15', 3,'프로젝트1'),
+      Item(5, '케이블', '15', 3,'프로젝트1'),
+      Item(1, '케이블', '15', 3,'프로젝트1'),
+      Item(2, '케이블', '15', 3,'프로젝트1'),
+      Item(3, '케이블', '15', 3,'프로젝트1'),
+      Item(4, '케이블', '15', 3,'프로젝트1'),
+      Item(5, '케이블', '15', 3,'프로젝트1'),
     ];
 
+    void goDetailPage(){
+      Navigator.pushNamed(context, '/product', arguments: '');
+    }
     return MaterialApp(
       title: '재고관리 앱',
       home: Scaffold(
@@ -74,9 +82,19 @@ class _MainScreenState extends State<MainScreen> {
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final item = items[index];
+                    print(item.product);
                     return GestureDetector(
                       onTap:(){
-                        Navigator.pushNamed(context, '/product', arguments: item);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProductScreen(
+                              product : item.product,
+                              specific: item.specific,
+                              count: item.count,
+                              project: item.project,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         padding: EdgeInsets.all(10.0),
@@ -112,7 +130,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: goDetailPage,
           child: Icon(Icons.add),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
